@@ -1,0 +1,21 @@
+.sideBar {
+    background-color: #9c78d5;
+    color: white;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    overflow-y: auto;
+    align-items: start;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    -moz-border-radius: 0.25rem;
+    -ms-border-radius: 0.25rem;
+    -o-border-radius: 0.25rem;
+
+    &Item {
+        font-size: 1.1rem;
+        padding: 0.5rem;
+    }
+}
