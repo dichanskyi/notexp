@@ -2,7 +2,7 @@
 
 **Version 0.0.1**
 
-📃 Advanced tool for writing detailed notes
+📃 Advanced tool for taking detailed notes
 
 ## 👨‍💻 Contributors
 
