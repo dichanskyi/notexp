@@ -1,11 +1,13 @@
+@use '../../variables.scss' as vars;
+
 .main {
     height: 100%;
     width: 25%;
     display: flex;
     position: fixed;
     flex-direction: column;
-    justify-content: start;
-    background-color: #a083d5;
-    border-right: 8px solid #765c9f;
+    justify-content: flex-start;
+    background-color: vars.$color_bg_secondary_light;
+    border-right: vars.$border_main_dark;
     padding: 0.8rem;
 }

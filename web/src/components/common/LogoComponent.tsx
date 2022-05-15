@@ -1,4 +1,4 @@
-import styles from '@styles/logo_component.module.scss'
+import styles from '@styles/brand/logo_component.module.scss'
 import { PROJECT_NAME } from '../../constants/general'
 
 export const LogoComponent = (): JSX.Element => {

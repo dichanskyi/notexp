@@ -1,15 +1,14 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
 import { MainLayout } from '../../components/common/MainLayout'
 import styles from '@styles/home/home.module.scss'
+import { ContentGridLarge } from '../../components/grids/contentGrid/ContentGridLarge'
 
 const HomePage: NextPage = () => {
     return (
-        <MainLayout title="Home">
+        <MainLayout title="🏠 Home">
             <div className={styles.container}>
                 <main className={styles.main}>
-                    <span>Home</span>
+                    <ContentGridLarge content={[]} />
                 </main>
 
                 <footer className={styles.footer}></footer>

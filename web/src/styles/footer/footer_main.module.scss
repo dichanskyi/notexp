@@ -1,0 +1,8 @@
+@use '../variables.scss' as vars;
+
+.main {
+    width: 100%;
+    height: 300px;
+    background-color: vars.$color_bg_secondary_dark;
+    border-top: vars.$border_main_dark;
+}

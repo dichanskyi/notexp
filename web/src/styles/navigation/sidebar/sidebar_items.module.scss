@@ -1,12 +1,14 @@
+@use '../../variables.scss' as vars;
+
 .sideBar {
-    background-color: #9c78d5;
+    background-color: vars.$color_bg_secondary_dark;
     color: white;
     list-style: none;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     overflow-y: auto;
-    align-items: start;
+    align-items: flex-start;
     padding: 0.5rem;
     border-radius: 0.25rem;
     -webkit-border-radius: 0.25rem;

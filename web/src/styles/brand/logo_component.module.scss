@@ -1,7 +1,9 @@
+@use '../variables.scss' as vars;
+
 .logo_main {
     padding: 1.1rem;
     background: transparent;
     font-weight: 600;
     font-size: 1.5rem;
-    color: white;
+    color: vars.$color_text_main;
 }
