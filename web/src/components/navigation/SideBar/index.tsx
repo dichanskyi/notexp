@@ -1,5 +1,6 @@
 import styles from '@styles/navigation/sidebar/sidebar.module.scss'
 import { LogoComponent } from '../../common/LogoComponent'
+import { AchievementsComponent } from '../../statistic/AchievementsComponent'
 import { SideBarItems } from './SideBarItems'
 
 export const SideBar = (): JSX.Element => {
@@ -7,6 +8,7 @@ export const SideBar = (): JSX.Element => {
         <div className={styles.main}>
             <LogoComponent />
             <SideBarItems />
+            <AchievementsComponent />
         </div>
     )
 }

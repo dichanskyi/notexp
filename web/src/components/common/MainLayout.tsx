@@ -4,6 +4,7 @@ import { mainTheme } from '../../styles/material_ui_presets/main_preset'
 import { PROJECT_NAME } from '../../constants/general'
 import { SideBar } from '../navigation/SideBar'
 import { FooterMain } from '../footer/FooterMain'
+import { TopBar } from '../navigation/TopBar'
 
 interface MainLayoutProps {
     children: JSX.Element
@@ -21,7 +22,10 @@ export const MainLayout = ({ children, title = 'Next' }: MainLayoutProps) => {
                 </Head>
                 <SideBar />
 
-                <main>{children}</main>
+                <main>
+                    <TopBar />
+                    {children}
+                </main>
 
                 <FooterMain />
             </MuiThemeProvider>

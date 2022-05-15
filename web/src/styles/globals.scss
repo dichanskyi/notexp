@@ -1,3 +1,5 @@
+@use './variables.scss' as vars;
+
 html,
 body {
     padding: 0;
@@ -12,4 +14,28 @@ a {
 
 * {
     box-sizing: border-box;
+}
+
+/*ScrollBar settings*/
+::-webkit-scrollbar-track {
+    background-color: vars.$color_bg_secondary_light;
+    border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    -moz-border-radius: 0.25rem;
+    -ms-border-radius: 0.25rem;
+    -o-border-radius: 0.25rem;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: vars.$color_bg_secondary_dark;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: vars.$color_bg_secondary_dark;
+    border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    -moz-border-radius: 0.25rem;
+    -ms-border-radius: 0.25rem;
+    -o-border-radius: 0.25rem;
 }
