@@ -24,7 +24,7 @@
 
 ### 💾 DB
 
--   ?
+-   Postgres SQL
 
 <br/>
 
