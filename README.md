@@ -20,7 +20,8 @@
 
 ### 🧠 Back-end
 
--   ?
+-   ASP NET Core 6
+-   Entity Framework
 
 ### 💾 DB
 
