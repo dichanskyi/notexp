@@ -1,0 +1,15 @@
+@use '../../variables.scss' as vars;
+
+.main {
+    padding: 0.5rem;
+    width: 100%;
+    min-height: 50vh;
+    background-color: vars.$color_bg_main;
+}
+
+.item {
+    background-color: vars.$color_bg_secondary_dark;
+    opacity: 80%;
+    height: 100px;
+    width: 100px;
+}

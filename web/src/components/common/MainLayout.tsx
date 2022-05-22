@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import { MuiThemeProvider } from '@material-ui/core'
-import { mainTheme } from '../../styles/material_ui_presets/main_preset'
 import { PROJECT_NAME } from '../../constants/general'
 import { SideBar } from '../navigation/SideBar'
 import { FooterMain } from '../footer/FooterMain'
 import { TopBar } from '../navigation/TopBar'
+import { mainTheme } from '../../styles/material_ui_presets/main_preset'
 
 interface MainLayoutProps {
     children: JSX.Element
@@ -22,7 +22,7 @@ export const MainLayout = ({ children, title = 'Next' }: MainLayoutProps) => {
                 </Head>
                 <SideBar />
 
-                <main>
+                <main style={{ margin: '0 0 0 25%' }}>
                     <TopBar />
                     {children}
                 </main>

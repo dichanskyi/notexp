@@ -15,7 +15,9 @@ a {
 * {
     box-sizing: border-box;
 }
-
+body {
+    background-color: vars.$color_bg_secondary_dark;
+}
 /*ScrollBar settings*/
 ::-webkit-scrollbar-track {
     background-color: vars.$color_bg_secondary_light;
