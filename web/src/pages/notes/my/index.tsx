@@ -14,15 +14,17 @@ const HomePage: NextPage = () => {
         <MainLayout title="Your Notes">
             <div>
                 <main className={styles.main}>
-                    <h1> My library of Notes:</h1>
-                    <Button
-                        variant="outlined"
-                        color="primary"
-                        startIcon={<CreateIcon />}
-                        onClick={() => router.push(pushNamed('create-draft'))}
-                    >
-                        Create a Note
-                    </Button>
+                    <div>
+                        <h1> My library of Notes:</h1>
+                        <Button
+                            variant="outlined"
+                            color="primary"
+                            startIcon={<CreateIcon />}
+                            onClick={() => router.push(pushNamed('create-draft'))}
+                        >
+                            Create a Note
+                        </Button>
+                    </div>
                 </main>
 
                 <footer></footer>

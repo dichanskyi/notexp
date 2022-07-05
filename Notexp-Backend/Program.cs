@@ -1,15 +1,22 @@
+using Microsoft.EntityFrameworkCore;
+using Notexp_Backend.Data;
+using Notexp_Backend.Services;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddScoped<IUserService, UserService>();
+
+builder.Services.AddDbContext<UserDataContext>(
+    options => options.UseNpgsql(builder.Configuration.GetConnectionString("NotexpDB"))
+);
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

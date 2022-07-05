@@ -1,0 +1,40 @@
+.main {
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    height: 100vh;
+    width: 100%;
+    overflow: auto;
+}
+.auth_window {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    min-height: 300px;
+    max-height: 500px;
+    width: 50%;
+    max-width: 800px;
+    min-width: 300px;
+    background-color: #fff;
+    border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    -moz-border-radius: 0.25rem;
+    -ms-border-radius: 0.25rem;
+    -o-border-radius: 0.25rem;
+
+    div {
+        margin-top: 4px;
+        margin-bottom: 3px;
+    }
+}
+
+.auth_inputs {
+    display: flex;
+    height: 50%;
+    width: 100%;
+    // justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
