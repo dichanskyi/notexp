@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Notexp_Backend.Migrations
 {
-    [DbContext(typeof(UserDataContext))]
+    [DbContext(typeof(DataContext))]
     [Migration("20220617191543_InitialDataBase")]
     partial class InitialDataBase
     {

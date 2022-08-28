@@ -1,4 +1,4 @@
-namespace Utils
+namespace Notexp_Backend.Utils
 {
     class Encoders {
         public static byte[] ToBytes (string value)

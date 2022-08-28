@@ -9,28 +9,28 @@ namespace Notexp_Backend.Services
         Task<User?> findOne(int id);
     }
 
-    public class UserService : IUserService 
+    public class UserService : IUserService
     {
-        private readonly UserDataContext _userDataContext;
+        private readonly DataContext _dataContext;
 
-        public UserService(UserDataContext userDataContext)
+        public UserService(DataContext dataContext)
         {
-            _userDataContext = userDataContext;
+            _dataContext = dataContext;
         }
 
 
-        public async Task<List<User>> findAll ()
+        public async Task<List<User>> findAll()
         {
-            List<User> users = await _userDataContext.Users.ToListAsync();
-             
+            List<User> users = await _dataContext.Users.ToListAsync();
+
             return users;
         }
 
-        public async Task<User?> findOne (int id)
-        { 
-            User? user = await _userDataContext.Users.FindAsync(id);
+        public async Task<User?> findOne(int id)
+        {
+            User? user = await _dataContext.Users.FindAsync(id);
 
-            return user; 
+            return user;
         }
     }
 }

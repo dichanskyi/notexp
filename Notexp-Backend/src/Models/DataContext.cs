@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 namespace Notexp_Backend.Data
 {
 
-    public class UserDataContext : DbContext
+    public class DataContext : DbContext
     {
-        public UserDataContext(DbContextOptions<UserDataContext> options): base(options) { } 
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

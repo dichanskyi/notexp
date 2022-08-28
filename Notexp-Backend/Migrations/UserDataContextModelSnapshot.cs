@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Notexp_Backend.Migrations
 {
-    [DbContext(typeof(UserDataContext))]
+    [DbContext(typeof(DataContext))]
     partial class UserDataContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

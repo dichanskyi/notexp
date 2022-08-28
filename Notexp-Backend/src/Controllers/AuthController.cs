@@ -3,8 +3,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
-using Encoder = Utils.Encoders;
+using Encoder = Notexp_Backend.Utils.Encoders;
 
+using Notexp_Backend.Authorization;
 using Notexp_Backend.Data;
 
 
@@ -14,22 +15,24 @@ namespace Notexp_Backend.Controllers
     [Route("api/v1/[controller]"), ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly UserDataContext _userDataContext;
+        private readonly DataContext _dataContext;
         private readonly IConfiguration _configuration;
+        private readonly IJwtUtils _jwtUtils;
 
-        public AuthController (UserDataContext userDataContext, IConfiguration configuration)
+        public AuthController(DataContext dataContext, IConfiguration configuration, IJwtUtils jwtUtils)
         {
-            _userDataContext = userDataContext;
+            _dataContext = dataContext;
             _configuration = configuration;
+            _jwtUtils = jwtUtils;
         }
 
 
 
         [HttpPost("register")]
-        public async Task<ActionResult<User>> Register (UserDto request)
+        public async Task<ActionResult<User>> Register(UserDto request)
         {
             User userData = new User();
-            
+
             CreatePasswordHash(
                 request.Passoword,
                 out byte[] PassowordSalt,
@@ -40,15 +43,15 @@ namespace Notexp_Backend.Controllers
             userData.PasswordHash = PassowordHash;
             userData.PasswordSalt = PassowordSalt;
 
-            _userDataContext.Users.Add(userData);
-            
-            await _userDataContext.SaveChangesAsync();
+            _dataContext.Users.Add(userData);
+
+            await _dataContext.SaveChangesAsync();
 
             return StatusCode(201);
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login (UserDto request)
+        public async Task<ActionResult<string>> Login(UserDto request)
         {
             // if (userData.Username != request.Username)
             // {
@@ -61,52 +64,31 @@ namespace Notexp_Backend.Controllers
             //     return BadRequest("The password is wrong!");
             // }
 
-            string token = CreateToken(request);
+            var token = _jwtUtils.GenerateJwtToken(request);
 
             return Ok(token);
 
         }
 
-        private string CreateToken (UserDto user)
-        {
-            List<Claim> claims = new List<Claim> {new Claim(ClaimTypes.Name, user.Username)};
-
-            var key = new SymmetricSecurityKey(
-                Encoder.ToBytes(
-                    _configuration.GetSection("AppSettings:Token").Value
-                )
-            );
-
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
-
-            var token = new JwtSecurityToken(
-                claims: claims,
-                expires: DateTime.Now.AddDays(1),
-                signingCredentials: creds
-            );
-
-            var JWT = new JwtSecurityTokenHandler().WriteToken(token);
-
-            return JWT;
-        }
-
-        private void CreatePasswordHash (
+        private void CreatePasswordHash(
             string password,
             out byte[] passwordSalt,
             out byte[] passwordHash
-        ) {
-            using(var hmac = new HMACSHA512()) // <- using statement here makes sure that after this code has completed its work it beeing collected by the garbage collector
+        )
+        {
+            using (var hmac = new HMACSHA512()) // <- using statement here makes sure that after this code has completed its work it beeing collected by the garbage collector
             {
                 passwordSalt = hmac.Key;
                 passwordHash = hmac.ComputeHash(Encoder.ToBytes(password));
             }
         }
 
-        private bool VerifyPasswordHash (
+        private bool VerifyPasswordHash(
             string password,
             byte[] passwordHash,
             byte[] passwordSalt
-        ) {
+        )
+        {
             using (var hmac = new HMACSHA512(passwordSalt))
             {
                 var computeHash = hmac.ComputeHash(Encoder.ToBytes(password));
