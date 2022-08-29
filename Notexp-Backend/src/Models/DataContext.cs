@@ -12,6 +12,7 @@ namespace Notexp_Backend.Data
         {
             modelBuilder.UseSerialColumns();
         }
+
         public DbSet<User> Users { get; set; }
     }
 }

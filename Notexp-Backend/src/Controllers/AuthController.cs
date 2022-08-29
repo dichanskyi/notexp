@@ -7,6 +7,7 @@ using Encoder = Notexp_Backend.Utils.Encoders;
 
 using Notexp_Backend.Authorization;
 using Notexp_Backend.Data;
+using Notexp_Backend.Utils.Auth;
 
 
 
@@ -33,7 +34,7 @@ namespace Notexp_Backend.Controllers
         {
             User userData = new User();
 
-            CreatePasswordHash(
+            AuthUtils.CreatePasswordHash(
                 request.Passoword,
                 out byte[] PassowordSalt,
                 out byte[] PassowordHash
@@ -59,7 +60,7 @@ namespace Notexp_Backend.Controllers
 
             // }
 
-            // if (!VerifyPasswordHash(request.Passoword, userData.PasswordHash, userData.PasswordSalt)) 
+            // if (!AuthUtils.VerifyPasswordHash(request.Passoword, userData.PasswordHash, userData.PasswordSalt)) 
             // {
             //     return BadRequest("The password is wrong!");
             // }
@@ -68,32 +69,6 @@ namespace Notexp_Backend.Controllers
 
             return Ok(token);
 
-        }
-
-        private void CreatePasswordHash(
-            string password,
-            out byte[] passwordSalt,
-            out byte[] passwordHash
-        )
-        {
-            using (var hmac = new HMACSHA512()) // <- using statement here makes sure that after this code has completed its work it beeing collected by the garbage collector
-            {
-                passwordSalt = hmac.Key;
-                passwordHash = hmac.ComputeHash(Encoder.ToBytes(password));
-            }
-        }
-
-        private bool VerifyPasswordHash(
-            string password,
-            byte[] passwordHash,
-            byte[] passwordSalt
-        )
-        {
-            using (var hmac = new HMACSHA512(passwordSalt))
-            {
-                var computeHash = hmac.ComputeHash(Encoder.ToBytes(password));
-                return computeHash.SequenceEqual(passwordHash);
-            }
         }
     }
 }

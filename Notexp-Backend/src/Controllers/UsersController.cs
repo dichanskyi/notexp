@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+
 using Notexp_Backend.Data;
 using Notexp_Backend.Services;
+using Notexp_Backend.Constants.ApiResponses;
 
 
 namespace Notexp_Backend.Controllers
@@ -55,7 +57,7 @@ namespace Notexp_Backend.Controllers
 
             if (user == null)
             {
-                return NotFound("User with this id is not found");
+                return NotFound(ApiResponses.UserNotFound.Message);
             }
 
             return Ok(user);

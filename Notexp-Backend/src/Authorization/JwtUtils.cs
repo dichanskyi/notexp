@@ -5,8 +5,9 @@ using System.Security.Claims;
 using System.Text;
 using Notexp_Backend.Authorization;
 using Notexp_Backend.Data;
+using Notexp_Backend.Entities;
 
-using Encoder = Utils.Encoders;
+using Encoder = Notexp_Backend.Utils.Encoders;
 
 
 public interface IJwtUtils
@@ -54,7 +55,7 @@ public class JwtUtils : IJwtUtils
         return new AuthenticationResult()
         {
             AccessTokne = accessToken,
-            RefreshToken = accessToken, // * Needs to be generated separately
+            RefreshToken = new RefreshToken(), // * Needs to be generated separately
             // RefreshToken = GenerateRefreshToken(user.Username).toString("D"),
             Expiration = expiration,
         };
