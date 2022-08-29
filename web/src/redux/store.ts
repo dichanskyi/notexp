@@ -1,8 +1,10 @@
 import { Action, combineReducers, configureStore, ThunkAction } from '@reduxjs/toolkit'
 import draftReducer from './slices/DraftSlice'
+import authReducer from './slices/AuthSlice'
 
 const rootReducer = combineReducers({
     draft: draftReducer,
+    auth: authReducer,
 })
 
 export const store = configureStore({

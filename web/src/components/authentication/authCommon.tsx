@@ -5,6 +5,9 @@ import { MainLayout } from '@components/common/MainLayout'
 
 import styles from '@styles/auth/auth.module.scss'
 import { BaseURI } from '../../common/constants'
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'
+import { authActions, authState as AuthState, setUser } from '../../redux/slices/AuthSlice'
+import { User } from '../../entities/User'
 
 export const AuthTypes = {
     login: {
@@ -38,6 +41,9 @@ export const AuthScreen = ({ config }: IAuthScreenConfig): JSX.Element => {
     const [login, setLogin] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [passwordConfirm, setPasswordConfirm] = useState<string>('')
+
+    const dispatch = useAppDispatch()
+    const authState = useAppSelector(AuthState)
 
     return (
         <MainLayout title={`${config.type.title}`}>
@@ -92,7 +98,14 @@ export const AuthScreen = ({ config }: IAuthScreenConfig): JSX.Element => {
                             />
                         )}
                     </div>
-                    <AppButton onClick={() => {}}> Submit 🦙</AppButton>
+                    <AppButton
+                        onClick={() => {
+                            dispatch(authActions.loginUser({ emailOrLogin, password }))
+                        }}
+                    >
+                        {' '}
+                        Submit 🦙
+                    </AppButton>
                 </div>
             </div>
         </MainLayout>
