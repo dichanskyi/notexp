@@ -1,6 +1,9 @@
 @use '../../variables.scss' as vars;
 
 .main {
+    background-position: bottom;
+    background-size: auto;
+    background-repeat: no-repeat;
     height: 100%;
     overflow: hidden;
     width: 25%;
